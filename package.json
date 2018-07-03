@@ -4,17 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config config/webpack.config.js",
-    "dev": "nodemon ./src/server/app.js",
-    "start": "nodemon ./dist/app.js",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./src/server/app.js",
+    "start": "cross-env NODE_ENV=production nodemon ./dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "kongqingfei",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.5.1"
+    "koa": "^2.5.1",
+    "koa-static": "^5.0.0"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^4.5.2",
+    "cross-env": "^5.2.0",
     "externals-dependencies": "^1.0.4",
     "nodemon": "^1.17.5",
     "webpack": "^4.14.0",
