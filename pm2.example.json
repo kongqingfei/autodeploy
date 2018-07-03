@@ -1,0 +1,15 @@
+{
+  "apps" : [{
+    "name"        : "autodeploy-node",
+    "script"      : "npm run dev",
+    "error_file"      : "./logs/node-app.stderr.log",
+    "out_file"        : "./logs/node-app.stdout.log",
+    "pid_file"        : "./logs/node-geo-api.pid",
+    "max_restarts"    : 10,
+    "merge_logs"      : true,
+    "watch"       : false,
+    "instances"   : 1,
+    "exec_mode"   : "cluster",
+    "env": {},
+  }]
+}
