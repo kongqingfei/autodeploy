@@ -8,12 +8,7 @@ app.use(async ctx => {
   if (!name || !version) {
     return ctx.body = 'name and version is required'
   }
-  childProcess.execFile(`/data/voyager/git/${name}/rr.sh`, [version], null, (error, stdout, stderr) => {
-    if (error) {
-      ctx.body = `部署失败\n\n\n${error.stack}\n\n\n${stderr}`
-    } else {
-      ctx.body = `部署成功\n\n\n${stdout}`
-    }
-  })
+  const ret = childProcess.execFileSync(`/data/voyager/git/${name}/rr.sh`, [version], {})
+  ctx.body = `部署结束\n\n\n${ret.toString()}`
 })
 app.listen(8000)
