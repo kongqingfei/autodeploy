@@ -9,12 +9,12 @@ app.use(async (ctx, next) => {
     return next()
   }
   const query = ctx.query || {}
-  const {name, version} = query
-  if (!name || !version) {
-    return ctx.body = 'name and version is required'
+  const {name} = query
+  if (!name) {
+    return ctx.body = 'name is required'
   }
   try {
-    const ret = childProcess.execFileSync(`/data/voyager/git/${name}/rr.sh`, [version], {})
+    const ret = childProcess.execFileSync(`/data/voyager/git/${name}/rr.sh`, {})
     ctx.body = `部署结束\n\n\n${ret.toString()}`
   } catch (e) {
     ctx.body = `部署异常\n\n\n${e.stack}`
