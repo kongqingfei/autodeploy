@@ -22,3 +22,4 @@ app.use(async (ctx, next) => {
 })
 app.use(server(path.resolve(__dirname, global.process.env.NODE_ENV === 'development' ? '../client/' : '.')))
 app.listen(8000)
+console.log('启动成功！！！！！！')
